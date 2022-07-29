@@ -8,6 +8,7 @@ import math
 import numpy as np
 from skimage import io, color
 import timeit # DEBUG
+import csv
 import cv2
 
 
@@ -111,7 +112,6 @@ class SLIC(object):
                 print("\t \t Runtime: ", stop - start)
                 outputImageArr = self.saveImage(name, False)
             return outputImageArr
-
 
     def initializeClusters(self):
 
@@ -425,7 +425,11 @@ if __name__ == '__main__':
 
     cv2.imshow("output-+", outputImageArr)
     cv2.waitKey(0)
-    
+
+    with open("/home/asma/Documents/Programing/BachelorProject/bachelorPro/Bachelor-Project/SuperpixeledImage.csv" , 'w') as f :
+        writer = csv.writer(f)
+        writer.writerow(outputImageArr)
+        f.close()
 
 
 
